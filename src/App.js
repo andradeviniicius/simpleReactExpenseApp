@@ -26,14 +26,14 @@ function App() {
     },
   ];
 
-  // The old way:
-  return React.createElement(
-    'div',
-    {},
-    React.createElement('h2',{},'Lets Get Started!'),
-    React.createElement(Expenses,{ listOfItems: expenses }),
+  return (
+    <div>
+      <h2>Let's get started!</h2>
+          <Expenses
+            listOfItems={expenses}
+          />
+    </div>
   );
-
 }
 
 export default App;
