@@ -1,3 +1,4 @@
+import React from 'react'
 import ExpenseItem from "./../src/components/Expenses/ExpenseItem";
 import ExpenseDate from "./../src/components/Expenses/ExpenseDate";
 import Expenses from "./components/Expenses/Expenses";
@@ -25,14 +26,14 @@ function App() {
     },
   ];
 
-  return (
-    <div>
-      <h2>Let's get started!</h2>
-          <Expenses
-            listOfItems={expenses}
-          />
-    </div>
+  // The old way:
+  return React.createElement(
+    'div',
+    {},
+    React.createElement('h2',{},'Lets Get Started!'),
+    React.createElement(Expenses,{ listOfItems: expenses }),
   );
+
 }
 
 export default App;
