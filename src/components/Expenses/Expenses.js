@@ -5,14 +5,18 @@ import ExpenseDate from './ExpenseDate'
 import ExpenseItem from './ExpenseItem'
 
 export default function Expenses(props){
+const list = props.listOfItems
+
     return (
         <>
         <div className='expenses'>
-            <ExpenseItem
-                title={props.title}
-                amount={props.amount}
-                date={props.date}
-            />
+            {list.map((e)=>{
+                return <ExpenseItem
+                    title={e.title}
+                    amount={e.amount}
+                    date={e.date}
+                />
+            })}
         </div>
         </>
     )
