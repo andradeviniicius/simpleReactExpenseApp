@@ -13,35 +13,31 @@ const ExpenseForm = () => {
     enteredDate: "",
   });
 
+  //   If your state depends on the previous this is the best solution
+  //  because naturally react schedules states and this prevents that you
+  //  always grab the most recent last state
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    });
-};
-
-const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
-    });
-};
-
-const dateChangeHandler = (event) => {
-    // setEnteredDate(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
     });
   };
 
-  const submitHandler = (e) =>{
-      e.preventDefault()
-      console.log(userInput)
-  }
+  const amountChangeHandler = (event) => {
+    setUserInput((prevState) => {
+      return { prevState, enteredAmount: event.target.value };
+    });
+  };
 
+  const dateChangeHandler = (event) => {
+    setUserInput((prevState) => {
+      return { prevState, enteredDate: event.target.value };
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(userInput);
+  };
 
   return (
     <form onSubmit={submitHandler}>
