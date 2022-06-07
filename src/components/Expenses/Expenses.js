@@ -12,6 +12,10 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  function compareDates(value) {
+    return value.date.getFullYear() === filteredYear;
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -19,9 +23,14 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.listOfItems.map((e) => {
+        {props.listOfItems.filter(compareDates).map((e) => {
           return (
-            <ExpenseItem key={e.id} title={e.title} amount={e.amount} date={e.date} />
+            <ExpenseItem
+              key={e.id}
+              title={e.title}
+              amount={e.amount}
+              date={e.date}
+            />
           );
         })}
       </Card>
