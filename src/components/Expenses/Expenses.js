@@ -24,9 +24,8 @@ const Expenses = (props) => {
           onChangeFilter={filterChangeHandler}
         />
 
-        {filteredArray.length === 0 ? (
-          <h1>teste</h1>
-        ) : (
+        {filteredArray.length === 0 && <h1>No expense</h1>}
+        {filteredArray.length > 0 &&
           filteredArray.map((e) => (
             <ExpenseItem
               key={e.id}
@@ -34,8 +33,7 @@ const Expenses = (props) => {
               amount={e.amount}
               date={e.date}
             />
-          ))
-        )}
+          ))}
       </Card>
     </div>
   );
