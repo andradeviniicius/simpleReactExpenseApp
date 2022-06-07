@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import ExpenseItem from "./../src/components/Expenses/ExpenseItem";
-import ExpenseDate from "./../src/components/Expenses/ExpenseDate";
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense";
+import {React, useState} from "react";
 
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
 const initialExpenses = [
   {
     id: "e1",
@@ -29,16 +27,15 @@ const initialExpenses = [
 const App = () => {
   const [expenses, setExpenses] = useState(initialExpenses);
 
-  function addExpenseHandler(expense) {
+  const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      return [expense,...prevExpenses];
+      return [expense, ...prevExpenses];
     });
-  }
+  };
+
   return (
     <div>
-      <h2>Let's get started!</h2>
       <NewExpense onAddExpense={addExpenseHandler} />
-
       <Expenses listOfItems={expenses} />
     </div>
   );
